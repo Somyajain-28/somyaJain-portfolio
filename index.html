@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Somya Jain — Business Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1526;
+    --ink-soft:#3C4A5A;
+    --paper:#EEF1F1;
+    --paper-alt:#F7F8F6;
+    --gold:#A8752A;
+    --gold-bright:#D8B876;
+    --green:#2F6E52;
+    --rust:#A23B2C;
+    --terracotta:#C46A3D;
+    --line:#CBD1D2;
+    --shadow:0 8px 22px rgba(10,21,38,0.09);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces', serif; margin:0; color:var(--ink); font-weight:600; letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.04em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:0.6rem;}
+  .section-head .eyebrow, .aspiration-card .eyebrow, .footer-top .eyebrow{display:flex; align-items:center; gap:8px;}
+  .section-head .eyebrow::before, .aspiration-card .eyebrow::before, .footer-top .eyebrow::before{content:''; width:18px; height:2px; background:var(--gold); flex-shrink:0;}
+  .footer-top .eyebrow::before, .aspiration-card .eyebrow::before{background:var(--gold-bright);}
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+
+  header.site-nav{position:sticky; top:0; z-index:20; background:rgba(233,237,238,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 28px; max-width:1100px; margin:0 auto; gap:20px;}
+  .nav-brand{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  .nav-mark{width:32px; height:32px; border-radius:50%; background:var(--ink); color:var(--gold-bright); display:flex; align-items:center; justify-content:center; font-family:'Fraunces', serif; font-size:0.82rem; font-weight:700; border:1.5px solid var(--gold); flex-shrink:0;}
+  .nav-name{font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem; white-space:nowrap;}
+  .nav-links{display:flex; gap:17px; list-style:none; margin:0; padding:0; flex-wrap:wrap; justify-content:flex-end;}
+  .nav-links a{white-space:nowrap;}
+  .nav-links a{text-decoration:none; font-size:0.8rem; font-family:'IBM Plex Mono', monospace; color:var(--ink-soft); letter-spacing:0.02em; border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color 0.2s ease, color 0.2s ease;}
+  .nav-links a:hover{color:var(--gold); border-color:var(--gold);}
+
+  .hero{background:var(--ink); color:var(--paper); position:relative; overflow:hidden; padding:80px 0 76px;}
+  .hero::after{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image:radial-gradient(rgba(216,184,118,0.14) 1px, transparent 1px);
+    background-size:26px 26px; mask-image:linear-gradient(to bottom, black, transparent 75%);
+  }
+  .hero .wrap{position:relative; z-index:1;}
+  .hero .wrap{position:relative; z-index:2; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:flex-start;}
+  .hero-eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:#D8B876; margin-bottom:18px; display:block;}
+  .hero h1{color:var(--paper); font-size:clamp(2.1rem, 4.6vw, 3.4rem); line-height:1.08; max-width:13ch;}
+  .hero p.role{margin-top:18px; max-width:48ch; font-size:1.04rem; color:#C4CDD6;}
+  .hero-cta{margin-top:30px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{font-family:'IBM Plex Mono', monospace; font-size:0.8rem; letter-spacing:0.03em; text-decoration:none; padding:12px 22px; border-radius:2px; display:inline-flex; align-items:center; gap:8px; transition:transform 0.15s ease;}
+  .btn svg{width:14px; height:14px; flex-shrink:0;}
+  .btn-primary{background:#D8B876; color:var(--ink);}
+  .btn-outline{border:1px solid rgba(233,237,238,0.4); color:var(--paper);}
+  .btn:hover{transform:translateY(-2px);}
+
+  .photo-frame{position:relative; flex-shrink:0; width:340px; height:340px;}
+  .photo-frame::before{
+    content:''; position:absolute; top:20px; left:20px; width:100%; height:100%;
+    border:2px dashed rgba(216,184,118,0.45); border-radius:50%; z-index:0;
+  }
+  .photo-slot{
+    width:340px; height:340px; border-radius:50%;
+    border:3px solid rgba(216,184,118,0.7);
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    text-align:center; color:#D8B876; font-family:'IBM Plex Mono', monospace; font-size:0.62rem;
+    letter-spacing:0.04em; text-transform:uppercase; flex-shrink:0; padding:0; overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35); position:relative; z-index:1;
+  }
+  .photo-slot img{width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block;}
+  .photo-slot span{margin-top:6px; line-height:1.4;}
+  .photo-badge{
+    position:absolute; bottom:14px; right:-14px; z-index:2; background:var(--gold-bright); color:var(--ink);
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; font-weight:700; letter-spacing:0.03em;
+    padding:8px 16px; border-radius:20px; transform:rotate(-6deg); box-shadow:0 6px 16px rgba(0,0,0,0.3);
+    white-space:nowrap;
+  }
+
+  .sparkline{position:absolute; right:-40px; bottom:-30px; width:55%; max-width:520px; opacity:0.4; z-index:1;}
+  .sparkline path{fill:none; stroke:#D8B876; stroke-width:2; stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2.4s ease forwards 0.3s;}
+  @keyframes draw{ to { stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){ .sparkline path{animation:none; stroke-dashoffset:0;} }
+
+  .snapshot{background:var(--paper-alt); border-bottom:1px solid var(--line);}
+  .snapshot .wrap{display:grid; grid-template-columns:repeat(4,1fr);}
+  .snap-item{padding:24px; border-right:1px solid var(--line); display:flex; gap:14px; align-items:flex-start;}
+  .snap-item:last-child{border-right:none;}
+  .snap-icon{flex-shrink:0; width:34px; height:34px; border-radius:50%; background:rgba(168,117,42,0.08); display:flex; align-items:center; justify-content:center; color:var(--gold);}
+  .snap-icon svg{width:18px; height:18px;}
+  .snap-label{font-family:'IBM Plex Mono', monospace; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-soft); display:block; margin-bottom:6px;}
+  .snap-value{font-family:'Fraunces', serif; font-size:1rem; font-weight:600; line-height:1.3;}
+
+  .logo-slot{
+    width:78px; height:78px; flex-shrink:0;
+    border:1.5px solid var(--gold); border-radius:6px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:0.55rem; color:var(--gold); line-height:1.3; padding:6px;
+    overflow:hidden; background:#fff; box-shadow:var(--shadow);
+  }
+  .logo-slot img{width:100%; height:100%; object-fit:contain; display:block;}
+  .org-with-logo{display:flex; align-items:flex-start; gap:18px;}
+  .about-photo-slot{
+    width:220px; height:220px; border-radius:50%; border:3px solid var(--gold);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:0.6rem; text-transform:uppercase; color:var(--gold);
+    float:right; margin:0 0 20px 30px; overflow:hidden; padding:0; box-shadow:var(--shadow);
+  }
+  .about-photo-slot img{width:100%; height:100%; object-fit:cover; object-position:center 15%; display:block;}
+  .exp-cert-link{display:inline-block; margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px;}
+  .exp-cert-link:hover{color:var(--rust); border-color:var(--rust);}
+
+  section{padding:76px 0;}
+  section.alt{background:var(--paper-alt);}
+  .section-head{margin-bottom:40px; max-width:62ch;}
+  .section-head h2{font-size:1.9rem;}
+  .section-head p{color:var(--ink-soft); margin-top:12px;}
+
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:44px; align-items:start;}
+  .about-text{display:flow-root;}
+  .about-grid p{color:var(--ink-soft); margin:0 0 16px;}
+  .about-fact{border-left:2px solid var(--gold); padding-left:18px;}
+  .about-lead{font-family:'Fraunces', serif; font-size:1.28rem; line-height:1.45; color:var(--ink); margin:0 0 18px; font-weight:500;}
+  .about-fact dt{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); margin-top:18px; display:flex; align-items:center; gap:8px;}
+  .about-fact dt:first-child{margin-top:0;}
+  .about-fact dd{margin:5px 0 0; font-family:'Fraunces', serif; font-size:0.98rem;}
+  .fact-icon{width:15px; height:15px; flex-shrink:0;}
+
+  .trait-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .trait-card{background:var(--paper-alt); padding:28px 24px;}
+  .trait-icon{width:42px; height:42px; border-radius:50%; background:var(--ink); color:var(--gold-bright); display:flex; align-items:center; justify-content:center; margin-bottom:16px;}
+  .trait-icon svg{width:22px; height:22px;}
+  .trait-mark{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:14px;}
+  .trait-card h3{font-size:1.05rem; margin-bottom:10px;}
+  .trait-card p{color:var(--ink-soft); font-size:0.88rem; margin:0;}
+
+  .aspiration-card{
+    background:var(--ink); color:var(--paper); padding:64px 56px; border-left:6px solid var(--gold);
+    position:relative; overflow:hidden;
+  }
+  .aspiration-card::before{
+    content:'"'; position:absolute; top:-46px; right:40px; font-family:'Fraunces', serif; font-size:11rem;
+    color:rgba(216,184,118,0.09); line-height:1; font-weight:700; pointer-events:none; z-index:0;
+  }
+  .aspiration-card p{font-family:'Fraunces', serif; font-size:1.7rem; line-height:1.45; margin:0; max-width:52ch; position:relative; z-index:1; font-weight:500;}
+  .aspiration-icon{width:48px; height:48px; border-radius:50%; background:rgba(216,184,118,0.12); color:var(--gold-bright); display:flex; align-items:center; justify-content:center; margin-bottom:20px; position:relative; z-index:1;}
+  .aspiration-icon svg{width:26px; height:26px;}
+  .aspiration-card .eyebrow{color:#D8B876; margin-bottom:22px; font-size:0.8rem; position:relative; z-index:1;}
+  @media (max-width:760px){
+    .aspiration-card{padding:44px 28px;}
+    .aspiration-card p{font-size:1.3rem;}
+    .aspiration-card::before{font-size:7rem;}
+  }
+
+  .ledger{border-top:1px solid var(--line); position:relative; padding-left:36px;}
+  .ledger::before{content:''; position:absolute; left:9px; top:8px; bottom:8px; width:2px; background:var(--line);}
+  .ledger-row{position:relative; padding:26px 0; border-bottom:1px solid var(--line);}
+  .ledger-row::before{
+    content:''; position:absolute; left:-36px; top:32px; width:14px; height:14px; border-radius:50%;
+    background:var(--paper); border:3px solid var(--gold); z-index:1;
+  }
+  .ledger-date{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--ink-soft); margin-bottom:10px; display:flex; align-items:center; gap:7px;}
+  .ledger-date svg{width:13px; height:13px; color:var(--gold); flex-shrink:0;}
+  .ledger-role h3{font-size:1.2rem;}
+  .ledger-org{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--gold); margin:4px 0 12px; display:block;}
+  .ledger-role ul{margin:0; padding-left:18px; color:var(--ink-soft);}
+  .ledger-role li{margin-bottom:6px;}
+  .skill-tags{list-style:none; margin:12px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-tags li{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; background:rgba(168,117,42,0.07); border:1px solid rgba(168,117,42,0.35); color:var(--gold); padding:4px 11px; border-radius:20px;}
+
+  .current-app{
+    background:var(--paper-alt); border:1px solid var(--line); box-shadow:var(--shadow);
+  }
+  .current-app-head{background:var(--ink); color:var(--paper); padding:18px 28px; display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  .current-app-head-left{display:flex; align-items:center; gap:14px;}
+  .current-app-icon{width:38px; height:38px; border-radius:8px; background:rgba(216,184,118,0.15); color:var(--gold-bright); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .current-app-icon svg{width:20px; height:20px;}
+  .current-app-head h3{color:var(--paper); font-size:1.25rem;}
+  .current-app-body{padding:26px 28px 28px;}
+  .current-app p{color:var(--ink-soft); margin:0 0 18px; max-width:60ch;}
+  .status-tag{font-family:'IBM Plex Mono', monospace; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--green); background:rgba(233,237,238,0.95); border:1px solid var(--green); padding:5px 12px; border-radius:2px; white-space:nowrap;}
+  .feature-list{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:10px;}
+  .feature-list li{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; background:var(--paper); border:1px solid var(--line); padding:6px 12px; border-radius:2px; color:var(--ink-soft);}
+
+  .factsheets{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:26px; align-items:start;}
+  .factsheet{
+    background:#fff; border:1px solid var(--line); display:flex; flex-direction:column;
+    box-shadow:var(--shadow); transition:transform 0.2s ease, box-shadow 0.2s ease;
+    border-top:4px solid var(--gold); border-radius:2px; overflow:hidden;
+  }
+  .factsheet:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(13,27,48,0.14);}
+  .factsheet.ft-course{border-top-color:#5B7A9D;}
+  .factsheet.ft-live{border-top-color:var(--green);}
+  .factsheet.ft-venture{border-top-color:var(--terracotta);}
+  .factsheet.ft-venture .fs-visual{background:linear-gradient(135deg, rgba(196,106,61,0.12), rgba(196,106,61,0.02)); color:var(--terracotta);}
+  .factsheet.ft-venture .fs-chip{color:var(--terracotta); border-color:var(--terracotta); background:rgba(196,106,61,0.07);}
+  .fs-gallery{display:grid; grid-template-columns:1.3fr 1fr; grid-template-rows:auto auto; gap:8px; margin-top:16px;}
+  .fs-gallery img{width:100%; object-fit:cover; border-radius:4px; border:1px solid var(--line); display:block;}
+  .fs-gallery .fs-gallery-featured{grid-row:1 / 3; height:100%; min-height:200px; object-position:center 25%;}
+  .fs-gallery .fs-gallery-small{height:96px;}
+  .fs-logo-inline{width:44px; height:44px; border-radius:6px; background:#fff; padding:3px; flex-shrink:0; box-shadow:var(--shadow);}
+  .fs-logo-inline img{width:100%; height:100%; object-fit:contain;}
+  .fs-head-with-logo{display:flex; align-items:center; gap:12px;}
+  .fs-visual{
+    height:88px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, rgba(168,117,42,0.08), rgba(168,117,42,0.02)); color:var(--gold);
+  }
+  .factsheet.ft-course .fs-visual{background:linear-gradient(135deg, rgba(91,122,157,0.1), rgba(91,122,157,0.02)); color:#5B7A9D;}
+  .factsheet.ft-live .fs-visual{background:linear-gradient(135deg, rgba(47,110,82,0.1), rgba(47,110,82,0.02)); color:var(--green);}
+  .fs-visual svg{width:44px; height:44px;}
+  .fs-head{background:var(--ink); color:var(--paper); padding:18px 20px; display:flex; justify-content:space-between; align-items:flex-start; gap:12px;}
+  .fs-head h3{color:var(--paper); font-size:1.05rem; line-height:1.32;}
+  .fs-code{font-family:'IBM Plex Mono', monospace; font-size:0.66rem; color:var(--gold-bright); white-space:nowrap; padding-top:3px; text-transform:uppercase; letter-spacing:0.04em;}
+  .fs-body{padding:20px; flex:1; display:flex; flex-direction:column;}
+  .fs-chip{
+    align-self:flex-start; font-family:'IBM Plex Mono', monospace; font-size:0.64rem; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--gold); border:1px solid var(--gold); padding:4px 11px; border-radius:20px;
+    margin-bottom:15px; background:rgba(168,117,42,0.06); display:inline-flex; align-items:center; gap:6px;
+  }
+  .chip-icon{width:12px; height:12px; flex-shrink:0;}
+  .factsheet.ft-course .fs-chip{color:#5B7A9D; border-color:#5B7A9D; background:rgba(91,122,157,0.06);}
+  .factsheet.ft-live .fs-chip{color:var(--green); border-color:var(--green); background:rgba(47,110,82,0.06);}
+  .fs-body p{color:var(--ink-soft); font-size:0.92rem; margin:0 0 16px; line-height:1.55;}
+  .fs-metrics{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; border-top:1px solid var(--line); padding-top:14px; margin-top:18px;}
+  .fs-metric-label{font-family:'IBM Plex Mono', monospace; font-size:0.6rem; text-transform:uppercase; color:var(--ink-soft); display:block; letter-spacing:0.04em;}
+  .fs-metric-value{font-family:'Fraunces', serif; font-size:0.94rem; font-weight:600; margin-top:3px; display:block;}
+
+  .skills-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .skill-cell{background:var(--paper-alt); padding:24px;}
+  .skill-icon{width:38px; height:38px; border-radius:8px; background:var(--ink); color:var(--gold-bright); display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
+  .skill-icon svg{width:20px; height:20px;}
+  .skill-cell h4{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); margin:0 0 10px;}
+  .skill-cell ul{margin:0; padding-left:16px; color:var(--ink-soft); font-size:0.88rem;}
+  .skill-cell li{margin-bottom:4px;}
+
+  .cert-list{border-top:1px solid var(--line);}
+  .workshop-highlight{margin-top:32px; background:var(--ink); border-radius:4px; overflow:hidden; box-shadow:var(--shadow);}
+  .workshop-highlight-head{padding:22px 28px; display:flex; align-items:center; justify-content:space-between; gap:14px; border-bottom:1px solid rgba(233,237,238,0.12); flex-wrap:wrap;}
+  .workshop-highlight-head-left{display:flex; align-items:center; gap:14px;}
+  .workshop-icon{width:40px; height:40px; border-radius:8px; background:rgba(216,184,118,0.15); color:var(--gold-bright); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .workshop-icon svg{width:22px; height:22px;}
+  .workshop-highlight-head h3{color:var(--paper); font-size:1.15rem; margin:0;}
+  .workshop-highlight-head .workshop-sub{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--gold-bright); display:block; margin-top:4px;}
+  .workshop-tag{font-family:'IBM Plex Mono', monospace; font-size:0.64rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--paper); background:rgba(216,184,118,0.18); border:1px solid var(--gold-bright); padding:5px 14px; border-radius:20px; white-space:nowrap;}
+  .workshop-highlight-body{padding:26px 28px; display:grid; grid-template-columns:1fr; gap:22px;}
+  .workshop-highlight-body.has-photo{grid-template-columns:1fr 200px;}
+  .workshop-learnings-label{font-family:'IBM Plex Mono', monospace; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-bright); margin-bottom:12px; display:block;}
+  .workshop-learnings{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px;}
+  .workshop-learnings li{color:#D7DCDF; font-size:0.92rem; line-height:1.5; padding-left:22px; position:relative;}
+  .workshop-learnings li::before{content:'✓'; position:absolute; left:0; top:1px; color:var(--gold-bright); font-weight:700;}
+  .workshop-photo{border-radius:6px; overflow:hidden; border:2px solid rgba(216,184,118,0.4); align-self:start;}
+  .workshop-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .cert-row{
+    display:grid; grid-template-columns:auto 1fr 170px 90px; align-items:center;
+    padding:18px 0; border-bottom:1px solid var(--line); gap:14px;
+  }
+  .cert-badge{width:36px; height:36px; border-radius:50%; background:rgba(168,117,42,0.08); color:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .cert-badge svg{width:19px; height:19px;}
+  .cert-name{font-family:'Fraunces', serif; font-size:1rem; line-height:1.3;}
+  .cert-issuer{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--gold); display:block; margin-top:3px;}
+  .cert-date{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--ink-soft); text-align:left;}
+  .cert-link{
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--gold); text-decoration:none;
+    border-bottom:1px solid var(--gold); padding-bottom:1px; white-space:nowrap; text-align:right; justify-self:end;
+  }
+  .cert-link:hover{color:var(--rust); border-color:var(--rust);}
+  @media (max-width:600px){
+    .cert-row{grid-template-columns:auto 1fr; gap:6px 12px; align-items:flex-start;}
+    .cert-date{grid-column:2;}
+    .cert-link{grid-column:2; justify-self:start;}
+  }
+
+  .edu-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding:22px 0; border-bottom:1px solid var(--line);}
+  .edu-row:first-child{border-top:1px solid var(--line);}
+  .edu-name{font-family:'Fraunces', serif; font-size:1.05rem;}
+  .edu-meta{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--ink-soft);}
+  .edu-score{display:flex; align-items:center; gap:12px;}
+  .edu-ring{width:52px; height:52px; flex-shrink:0;}
+  .edu-ring circle{fill:none; stroke-width:3;}
+  .edu-ring .track{stroke:var(--line);}
+  .edu-ring .fill{stroke:var(--gold); stroke-linecap:round; transform:rotate(-90deg); transform-origin:50% 50%; transition:stroke-dashoffset 1s ease;}
+  .edu-ring-label{font-family:'Fraunces', serif; font-size:0.78rem; font-weight:700; fill:var(--ink); text-anchor:middle; dominant-baseline:middle;}
+
+  footer{background:var(--ink); color:var(--paper); padding:0; position:relative; overflow:hidden;}
+  .footer-top{padding:90px 0 70px; position:relative; z-index:1;}
+  footer h2{color:var(--paper); font-size:clamp(2.2rem, 5vw, 3.2rem); max-width:18ch; line-height:1.1;}
+  footer p{color:#B9C2CA; margin-top:16px; max-width:46ch; font-size:1.05rem;}
+  .contact-grid{list-style:none; padding:0; margin:44px 0 0; display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:14px;}
+  .contact-grid li{background:rgba(233,237,238,0.05); border:1px solid rgba(233,237,238,0.15); border-radius:4px; padding:18px 20px; transition:border-color 0.2s ease, background 0.2s ease; display:flex; gap:14px; align-items:center; min-height:88px;}
+  .contact-grid li > span:last-child{min-width:0; flex:1;}
+  .contact-grid li:hover{border-color:var(--gold-bright); background:rgba(216,184,118,0.06);}
+  .contact-icon{width:32px; height:32px; border-radius:50%; background:rgba(216,184,118,0.12); color:var(--gold-bright); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .contact-icon svg{width:16px; height:16px;}
+  .contact-grid .contact-label{font-family:'IBM Plex Mono', monospace; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold-bright); display:block; margin-bottom:8px;}
+  .contact-grid a, .contact-grid span.contact-value{font-family:'IBM Plex Mono', monospace; font-size:0.86rem; text-decoration:none; color:var(--paper); display:inline-block; overflow-wrap:anywhere; word-break:break-word; max-width:100%;}
+  .contact-grid a:hover{color:var(--gold-bright);}
+  .footer-signature{border-top:1px solid rgba(233,237,238,0.12); padding:26px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; position:relative; z-index:1;}
+  .foot-note{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:#7E8A94;}
+  .footer-mark{font-family:'Fraunces', serif; font-size:1.1rem; color:var(--gold-bright); letter-spacing:0.02em;}
+  .footer-bigtype{position:absolute; right:-10px; bottom:-40px; font-family:'Fraunces', serif; font-size:min(22vw, 220px); font-weight:700; color:rgba(233,237,238,0.03); line-height:1; letter-spacing:-0.02em; z-index:0; pointer-events:none; white-space:nowrap;}
+  .placeholder{color:#D8B876;}
+
+  @media (max-width: 760px){
+    .nav-links{display:none;}
+    .hero .wrap{grid-template-columns:1fr; text-align:left;}
+    .photo-frame{width:220px; height:220px; margin-bottom:8px;}
+    .photo-slot{width:220px; height:220px;}
+    .workshop-highlight-body.has-photo{grid-template-columns:1fr;}
+    .workshop-photo{max-width:220px;}
+    .photo-frame::before{top:10px; left:10px;}
+    .photo-badge{font-size:0.58rem; padding:6px 12px; right:-8px;}
+    .about-photo-slot{width:160px; height:160px;}
+    .snapshot .wrap{grid-template-columns:repeat(2,1fr);}
+    .about-grid{grid-template-columns:1fr;}
+    .about-photo-slot{float:none; margin:0 0 16px 0;}
+    .ledger{padding-left:26px;}
+    .ledger-row::before{left:-26px; width:11px; height:11px;}
+    .current-app-head{flex-direction:column; align-items:flex-start; gap:10px;}
+    .org-with-logo{flex-direction:column;}
+  }
+  :focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="nav-mark">SJ</span>
+      <span class="nav-name">Somya Jain</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#defines-me">Defines Me</a></li>
+      <li><a href="#aspirations">Aspirations</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#currentapp">Current Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="hero-eyebrow">Business Analyst · MBA — Business Analytics &amp; Marketing</span>
+      <h1>Turning fund data into decisions people trust.</h1>
+      <p class="role">Business Analyst Intern at RKS Wealth and MBA candidate at LPU. I build the dashboards, screeners, and profiling models behind investor decisions.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>View my work</a>
+        <a class="btn btn-outline" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Get in touch</a>
+      </div>
+    </div>
+    <div class="photo-frame">
+      <div class="photo-slot"><img src="images/photo-standing.png" alt="Somya Jain"></div>
+      <span class="photo-badge">MBA Candidate</span>
+    </div>
+  </div>
+  <svg class="sparkline" viewBox="0 0 500 200" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,150 L50,140 L100,155 L150,110 L200,120 L250,70 L300,90 L350,50 L400,60 L450,20 L500,35" />
+  </svg>
+</section>
+
+<div class="snapshot">
+  <div class="wrap">
+    <div class="snap-item"><span class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span><span><span class="snap-label">Current Role</span><span class="snap-value">BA Intern, RKS Wealth</span></span></div>
+    <div class="snap-item"><span class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></span><span><span class="snap-label">Domain Focus</span><span class="snap-value">Mutual Funds · SIP · Risk Ratios · Investor Profiling</span></span></div>
+    <div class="snap-item"><span class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2z"/></svg></span><span><span class="snap-label">Core Tools</span><span class="snap-value">Excel · Power BI · Python</span></span></div>
+    <div class="snap-item"><span class="snap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 10.5V16c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5.5"/></svg></span><span><span class="snap-label">Education</span><span class="snap-value">MBA, LPU — CGPA 9.03</span></span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Profile</span>
+      <h2>About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="about-photo-slot"><img src="images/photo-podium.png" alt="Somya Jain speaking at Mittal School of Business"></div>
+        <p class="about-lead">Numbers rarely explain themselves — figuring out what they're actually saying is the part of the job I care about most.</p>
+        <p>I work at the intersection of financial analysis and business analytics, translating mutual fund, SIP, and SWP data into risk profiles and recommendations that advisors and clients can act on with confidence.</p>
+        <p>Alongside my internship at RKS Wealth, I'm completing an MBA in Business Analytics at LPU. I enjoy the part most people skip: sitting with messy data until it says something clear, then turning that into a decision someone can actually use.</p>
+      </div>
+      <dl class="about-fact">
+        <dt><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="fact-icon"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Based in</dt>
+        <dd>Gwalior, Madhya Pradesh</dd>
+        <dt><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="fact-icon"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Currently</dt>
+        <dd>Business Analyst Intern, RKS Wealth</dd>
+        <dt><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="fact-icon"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 10.5V16c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5.5"/></svg>Studying</dt>
+        <dd>MBA — Business Analytics, LPU</dd>
+        <dt><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="fact-icon"><path d="M12 2l2.9 6.3L22 9.2l-5 4.8 1.2 7-6.2-3.4L5.8 21 7 14 2 9.2l7.1-.9z"/></svg>Power skills</dt>
+        <dd>Time-Management, Adaptability, Leadership</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="defines-me">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Beyond the Job Title</span>
+      <h2>How My Role Defines Me</h2>
+      <p>Fund data, investor behaviour, and dashboards have shaped how I think — on and off the job.</p>
+    </div>
+    <div class="trait-grid">
+      <div class="trait-card">
+        <span class="trait-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+        <span class="trait-mark">Alpha</span>
+        <h3>Analytical by habit</h3>
+        <p>I don't take numbers at face value — I ask what's actually driving them.</p>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
+        <span class="trait-mark">Beta</span>
+        <h3>Action over observation</h3>
+        <p>A dashboard nobody acts on is just decoration. I turn findings into next steps.</p>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+        <span class="trait-mark">Sharpe</span>
+        <h3>Client-first thinking</h3>
+        <p>I ask what a person actually needs before I ask what the data says.</p>
+      </div>
+      <div class="trait-card">
+        <span class="trait-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+        <span class="trait-mark">CAGR</span>
+        <h3>Patient with the process</h3>
+        <p>Consistency beats shortcuts — in scheme models, and in how I build.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="aspirations">
+  <div class="wrap">
+    <div class="aspiration-card">
+      <span class="aspiration-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c2.5 2 4 5.5 4 9 0 2-1 4-2 5l-2 3-2-3c-1-1-2-3-2-5 0-3.5 1.5-7 4-9z"/><path d="M9 15l-3 1 1-3M15 15l3 1-1-3"/><circle cx="12" cy="9" r="1.5"/></svg></span>
+      <span class="eyebrow">Career Aspirations &amp; Future Goals</span>
+      <p>I want to be the analyst who doesn't just report numbers, but reads them and suggests the solution — data work that leads to action, not just observation.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Track Record</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="ledger">
+      <div class="ledger-row">
+        <div class="ledger-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>Jun 2026 — Present</div>
+        <div class="ledger-role">
+          <div class="org-with-logo">
+            <div class="logo-slot"><img src="images/rkswealth-logo.png" alt="RKS Wealth logo"></div>
+            <div>
+              <h3>Business Analyst Intern</h3>
+              <span class="ledger-org">RKS Wealth Pvt. Ltd. · Gwalior, MP</span>
+            </div>
+          </div>
+          <ul>
+            <li>Built an investor risk-profiling framework aligning fund recommendations with client risk appetite.</li>
+            <li>Analyzed mutual fund schemes using Sharpe Ratio, Alpha, Beta, Std. Deviation, and CAGR.</li>
+            <li>Developed a scheme-selection model mapping investor profiles to suitable funds.</li>
+          </ul>
+          <ul class="skill-tags">
+            <li>Risk Profiling</li><li>Portfolio Analysis</li><li>Investment Research</li><li>Dashboard Dev</li>
+          </ul>
+          <a class="exp-cert-link" href="certificates/rks-wealth-internship-certificate.pdf" target="_blank" rel="noopener">View Certificate →</a>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>Dec 2025 — Mar 2026</div>
+        <div class="ledger-role">
+          <div class="org-with-logo">
+            <div class="logo-slot"><img src="images/dc-jalandhar.jpg" alt="Deputy Commissioner Office, Jalandhar"></div>
+            <div>
+              <h3>Public Policy Intern</h3>
+              <span class="ledger-org">Deputy Commissioner Office (IT Department) · Jalandhar</span>
+            </div>
+          </div>
+          <ul>
+            <li>Streamlined the Punjab Grievance Redressal System, cutting three major workflow bottlenecks.</li>
+            <li>Built an Excel tracker for 500+ daily cases — 25% less manual effort, 98% reporting accuracy.</li>
+            <li>Built a dashboard that cut average case resolution time by 15%.</li>
+          </ul>
+          <ul class="skill-tags">
+            <li>Workflow Optimization</li><li>Dashboards</li><li>Data Governance</li>
+          </ul>
+          <a class="exp-cert-link" href="certificates/dc-jalandhar-internship-certificate.pdf" target="_blank" rel="noopener">View Certificate →</a>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>May 2022 — Jun 2022</div>
+        <div class="ledger-role">
+          <div class="org-with-logo">
+            <div class="logo-slot"><img src="images/techera-logo.png" alt="TechEra logo"></div>
+            <div>
+              <h3>Marketing &amp; Sales Intern</h3>
+              <span class="ledger-org">TechEra · EdTech Platform</span>
+            </div>
+          </div>
+          <ul>
+            <li>Conducted market research to identify prospective learner segments.</li>
+            <li>Converted leads into enrolled customers through structured outreach and pitching.</li>
+            <li>Supported revenue growth via targeted campaigns and closing strategies.</li>
+          </ul>
+          <ul class="skill-tags">
+            <li>Market Research</li><li>Lead Conversion</li><li>Sales Communication</li>
+          </ul>
+          <a class="exp-cert-link" href="certificates/techera-internship-certificate.pdf" target="_blank" rel="noopener">View Certificate →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="currentapp">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Currently Building</span>
+      <h2>Currently Working On</h2>
+    </div>
+    <div class="current-app">
+      <div class="current-app-head">
+        <div class="current-app-head-left">
+          <span class="current-app-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+          <h3>RKS SuperApp — Live Tracking &amp; Analytics Dashboard</h3>
+        </div>
+        <span class="status-tag">In Progress</span>
+      </div>
+      <div class="current-app-body">
+        <p>Building a unified, live tracking dashboard on RKS Wealth's client-facing SuperApp — bringing SIP and SWP analytics, investor risk profiling, and a fund recommendation centre into one view, alongside a customer churn prediction model to help the company flag at-risk clients early.</p>
+        <ul class="feature-list">
+          <li>SIP Analytics</li>
+          <li>SWP Analytics</li>
+          <li>Investor Risk Profile</li>
+          <li>Recommendation Centre</li>
+          <li>Customer Churn Model</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Selected Work</span>
+      <h2>Projects</h2>
+      <p>A few pieces of analysis presented the way I present funds to advisors — as fact sheets.</p>
+    </div>
+    <div class="factsheets">
+
+      <div class="factsheet">
+        <div class="fs-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9M9 21V4M15 21v-8M21 21V7"/></svg></div>
+        <div class="fs-head"><h3>Mutual Fund Screener &amp; Scheme Selection Model</h3><span class="fs-code">RKS Wealth</span></div>
+        <div class="fs-body">
+          <span class="fs-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="chip-icon"><path d="M3 21V9M9 21V4M15 21v-8M21 21V7"/></svg>Data Analysis</span>
+          <p>Quartile rankings and investor-profile mapping across Large, Mid, Small, and Multi Cap categories using 7 key fund metrics.</p>
+          <div class="fs-metrics">
+            <div><span class="fs-metric-label">Categories</span><span class="fs-metric-value">4</span></div>
+            <div><span class="fs-metric-label">Metrics</span><span class="fs-metric-value">7</span></div>
+            <div><span class="fs-metric-label">Tool</span><span class="fs-metric-value">Power Query</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="factsheet ft-course">
+        <div class="fs-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2.5 3h2.5l2.6 12.4a2 2 0 0 0 2 1.6h8a2 2 0 0 0 2-1.6L21 7H6"/></svg></div>
+        <div class="fs-head"><h3>E-Commerce Business Analytics (Olist)</h3><span class="fs-code">LPU · Coursework</span></div>
+        <div class="fs-body">
+          <span class="fs-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="chip-icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Coursework</span>
+          <p>Star-schema model of the Olist e-commerce dataset with DAX measures in Power BI, plus a parallel RLS-secured dashboard in Cognos.</p>
+          <div class="fs-metrics">
+            <div><span class="fs-metric-label">Model</span><span class="fs-metric-value">Star Schema</span></div>
+            <div><span class="fs-metric-label">Tools</span><span class="fs-metric-value">2</span></div>
+            <div><span class="fs-metric-label">Security</span><span class="fs-metric-value">RLS</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="factsheet ft-live">
+        <div class="fs-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="4" height="9"/><rect x="10" y="6" width="4" height="14"/><rect x="17" y="3" width="4" height="17"/></svg></div>
+        <div class="fs-head"><h3>Predictive Analytics &amp; Data Preparation</h3><span class="fs-code">LPU · Live Project</span></div>
+        <div class="fs-body">
+          <span class="fs-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="chip-icon"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Live Project</span>
+          <p>Consolidated telecom data into a centralized system; cleansed and encoded records, then applied Logistic Regression and Decision Tree classification.</p>
+          <div class="fs-metrics">
+            <div><span class="fs-metric-label">Domain</span><span class="fs-metric-value">Telecom</span></div>
+            <div><span class="fs-metric-label">Models</span><span class="fs-metric-value">2</span></div>
+            <div><span class="fs-metric-label">Date</span><span class="fs-metric-value">Apr 2026</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="factsheet ft-live">
+        <div class="fs-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <div class="fs-head"><h3>Big Data Analytics — Hadoop Pipeline</h3><span class="fs-code">LPU · Live Project</span></div>
+        <div class="fs-body">
+          <span class="fs-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="chip-icon"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>Live Project</span>
+          <p>Parallel computation workflows in Hadoop; integrated MySQL and HDFS via Sqoop, used Pig for ETL, and built partitioned Hive schemas.</p>
+          <div class="fs-metrics">
+            <div><span class="fs-metric-label">Stack</span><span class="fs-metric-value">Hadoop</span></div>
+            <div><span class="fs-metric-label">ETL</span><span class="fs-metric-value">Pig · Sqoop</span></div>
+            <div><span class="fs-metric-label">Date</span><span class="fs-metric-value">Apr 2026</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="factsheet ft-venture">
+        <div class="fs-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 4H8l1-4z"/><path d="M8 7h8l1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L8 7z"/><path d="M9.5 11c1 1 1.5 2 1.5 3.5"/></svg></div>
+        <div class="fs-head">
+          <div class="fs-head-with-logo">
+            <span class="fs-logo-inline"><img src="images/gharwaas-logo.jpg" alt="Gharwaas logo"></span>
+            <h3>Gharwaas — Brand the Unbrand</h3>
+          </div>
+          <span class="fs-code">Personal Venture</span>
+        </div>
+        <div class="fs-body">
+          <span class="fs-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="chip-icon"><path d="M9 3h6l1 4H8l1-4z"/></svg>Branding &amp; Marketing</span>
+          <p>A grassroots branding initiative built around local artisans and handmade pottery. Partnered directly with artisans to source authentic handcrafted pieces, then built market presence through social media and in-person selling.</p>
+          <div class="fs-gallery">
+            <img class="fs-gallery-featured" src="images/gharwaas-me.jpg" alt="Somya at the Gharwaas pottery site">
+            <img class="fs-gallery-small" src="images/gharwaas-products.jpg" alt="Gharwaas handmade pottery products">
+            <img class="fs-gallery-small" src="images/gharwaas-poster.jpg" alt="Gharwaas promotional poster">
+          </div>
+          <div class="fs-metrics">
+            <div><span class="fs-metric-label">Revenue</span><span class="fs-metric-value">₹15,000</span></div>
+            <div><span class="fs-metric-label">Channels</span><span class="fs-metric-value">Social · In-Person</span></div>
+            <div><span class="fs-metric-label">Date</span><span class="fs-metric-value">Nov 2025</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Toolkit</span>
+      <h2>Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cell">
+        <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9M9 21V4M15 21v-8M21 21V7"/></svg></span>
+        <h4>BI &amp; Visualization</h4>
+        <ul><li>Power BI — Star Schema, DAX, RLS</li><li>Tableau</li><li>IBM Cognos Analytics — Data Module, dashboards, crosstab reports</li></ul>
+      </div>
+      <div class="skill-cell">
+        <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+        <h4>Data &amp; Modeling</h4>
+        <ul><li>Excel — Power Query</li><li>IBM SPSS Modeler</li><li>SQL (Basic to Advanced)</li><li>Python (beginner–intermediate)</li></ul>
+      </div>
+      <div class="skill-cell">
+        <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <h4>Domain</h4>
+        <ul><li>Mutual fund analysis &amp; screening</li><li>SIP &amp; SWP analytics</li><li>Investor profiling &amp; risk categorization</li></ul>
+      </div>
+      <div class="skill-cell">
+        <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3L22 9.2l-5 4.8 1.2 7-6.2-3.4L5.8 21 7 14 2 9.2l7.1-.9z"/></svg></span>
+        <h4>Power Skills</h4>
+        <ul><li>Time-Management</li><li>Adaptability</li><li>Leadership</li><li>Problem-Solving</li><li>Communication</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Credentials</span>
+      <h2>Certifications</h2>
+    </div>
+    <div class="cert-list">
+      <div class="cert-row">
+        <span class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg></span>
+        <span class="cert-name">Data Visualization with Cognos Dashboard Embedded<span class="cert-issuer">IBM · Lovely Professional University</span></span>
+        <span class="cert-date">April 19, 2026</span>
+        <a class="cert-link" href="certificates/cert-data-visualization.pdf" target="_blank" rel="noopener">View →</a>
+      </div>
+      <div class="cert-row">
+        <span class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg></span>
+        <span class="cert-name">Predictive Analytics using SPSS Modeler — Advanced Course<span class="cert-issuer">IBM · Lovely Professional University</span></span>
+        <span class="cert-date">April 19, 2026</span>
+        <a class="cert-link" href="certificates/cert-spss-modeler.pdf" target="_blank" rel="noopener">View →</a>
+      </div>
+      <div class="cert-row">
+        <span class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg></span>
+        <span class="cert-name">Big Data 101<span class="cert-issuer">IBM · Lovely Professional University</span></span>
+        <span class="cert-date">April 23, 2026</span>
+        <a class="cert-link" href="certificates/cert-big-data-101.pdf" target="_blank" rel="noopener">View →</a>
+      </div>
+      <div class="cert-row">
+        <span class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg></span>
+        <span class="cert-name">Data Analysis with Python<span class="cert-issuer">IBM · Cognitive Class</span></span>
+        <span class="cert-date">July 22, 2025</span>
+        <a class="cert-link" href="certificates/cert-data-analysis-python.pdf" target="_blank" rel="noopener">View →</a>
+      </div>
+      <div class="cert-row">
+        <span class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg></span>
+        <span class="cert-name">SQL (Basic)<span class="cert-issuer">HackerRank</span></span>
+        <span class="cert-date">July 21, 2025</span>
+        <a class="cert-link" href="certificates/cert-sql-basic.pdf" target="_blank" rel="noopener">View →</a>
+      </div>
+      <div class="cert-row">
+        <span class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg></span>
+        <span class="cert-name">SQL (Intermediate)<span class="cert-issuer">HackerRank</span></span>
+        <span class="cert-date">July 21, 2025</span>
+        <a class="cert-link" href="certificates/cert-sql-intermediate.pdf" target="_blank" rel="noopener">View →</a>
+      </div>
+      <div class="cert-row">
+        <span class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg></span>
+        <span class="cert-name">SQL (Advanced)<span class="cert-issuer">HackerRank</span></span>
+        <span class="cert-date">July 21, 2025</span>
+        <a class="cert-link" href="certificates/cert-sql-advanced.pdf" target="_blank" rel="noopener">View →</a>
+      </div>
+    </div>
+
+    <div class="workshop-highlight">
+      <div class="workshop-highlight-head">
+        <div class="workshop-highlight-head-left">
+          <span class="workshop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9M9 21V4M15 21v-8M21 21V7"/></svg></span>
+          <div>
+            <h3>Fund Services &amp; Markets Workshop</h3>
+            <span class="workshop-sub">BNY Mellon · 5-Day Intensive · November 2025</span>
+          </div>
+        </div>
+        <span class="workshop-tag">Workshop Highlight</span>
+      </div>
+      <div class="workshop-highlight-body has-photo">
+        <div>
+          <span class="workshop-learnings-label">Key Learnings</span>
+          <ul class="workshop-learnings">
+            <li>Explored fund structuring, funding mechanisms, and hedging strategies used in institutional financial markets.</li>
+            <li>Gained an in-depth overview of BNY Mellon's core service lines — custody, asset servicing, and treasury solutions.</li>
+            <li>Built foundational understanding of risk management practices applied across global financial markets.</li>
+          </ul>
+        </div>
+        <div class="workshop-photo"><img src="images/bny-mellon-workshop.jpg" alt="Somya receiving her BNY Mellon workshop certificate"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Academics</span>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-row">
+      <div class="org-with-logo">
+        <div class="logo-slot"><img src="images/lpu-logo.jpg" alt="Lovely Professional University logo"></div>
+        <div><div class="edu-name">MBA — Business Analytics &amp; Marketing</div><div class="edu-meta">Lovely Professional University · Phagwara, Punjab</div></div>
+      </div>
+      <div class="edu-score">
+        <svg class="edu-ring" viewBox="0 0 52 52">
+          <circle class="track" cx="26" cy="26" r="21"/>
+          <circle class="fill" cx="26" cy="26" r="21" stroke-dasharray="118.9 131.9"/>
+          <text class="edu-ring-label" x="26" y="27">9.03</text>
+        </svg>
+        <div class="edu-meta">Aug 2025 – Ongoing<br>CGPA 9.03 / 10</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="org-with-logo">
+        <div class="logo-slot"><img src="images/jiwaji-logo.jpg" alt="Jiwaji University logo"></div>
+        <div><div class="edu-name">Bachelor of Commerce</div><div class="edu-meta">Jiwaji University · Gwalior, Madhya Pradesh</div></div>
+      </div>
+      <div class="edu-score">
+        <svg class="edu-ring" viewBox="0 0 52 52">
+          <circle class="track" cx="26" cy="26" r="21"/>
+          <circle class="fill" cx="26" cy="26" r="21" stroke-dasharray="92.8 131.9"/>
+          <text class="edu-ring-label" x="26" y="27">70%</text>
+        </svg>
+        <div class="edu-meta">Jul 2021 – Apr 2025<br>70.4% Aggregate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <span class="footer-bigtype" aria-hidden="true">SOMYA JAIN</span>
+  <div class="wrap footer-top">
+    <span class="eyebrow" style="color:#D8B876;">Let's Talk</span>
+    <h2>Open to full-time analyst roles.</h2>
+    <p>Whether it's a data problem, a dashboard, or an opportunity to discuss — reach out.</p>
+    <ul class="contact-grid">
+      <li><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><span class="contact-label">Email</span><a href="mailto:kumarisomyajain@gmail.com">kumarisomyajain@<wbr>gmail.com</a></span></li>
+      <li><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg></span><span><span class="contact-label">Phone</span><a href="tel:+919691149506">+91-9691149506</a></span></li>
+      <li><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7.2v.1M11 17v-4.5a2 2 0 0 1 4 0V17M11 17v-7"/></svg></span><span><span class="contact-label">LinkedIn</span><a href="https://linkedin.com/in/somya-jain29" target="_blank" rel="noopener">/in/somya-jain29</a></span></li>
+      <li><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg></span><span><span class="contact-label">Location</span><span class="contact-value">Gwalior, Madhya Pradesh</span></span></li>
+    </ul>
+  </div>
+  <div class="wrap footer-signature">
+    <span class="footer-mark">S. Jain</span>
+    <div class="foot-note">© <span id="year"></span> Somya Jain. Built as a personal portfolio.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
